@@ -4,7 +4,7 @@ const Document = require("./Document")
 const connectDatabase = async () => {
     try {
      
-      await mongoose.connect("mongodb+srv://zeadhani:1234560@cluster0.dnpcx.mongodb.net/?retryWrites=true&w=majority");
+      await mongoose.connect("mongodb+srv://zeadhani:1234560@cluster0.dnpcx.mongodb.net/test?retryWrites=true&w=majority");
   
       console.log("connected to database");
     } catch (error) {
@@ -14,9 +14,9 @@ const connectDatabase = async () => {
   
   connectDatabase();
 
-const io = require("socket.io")(3001, {
+const io = require("socket.io")(process.env.PORT, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "*",
     methods: ["GET", "POST"],
   },
 })
